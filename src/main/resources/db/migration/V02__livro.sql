@@ -1,0 +1,12 @@
+CREATE TABLE livro{
+    id BIGINT(10) PRIMARY KEY,
+    titulo VARCHAR(50) NOT NULL,
+    autor VARCHAR(50) NOT NULL,
+    genero VARCHAR(30) NOT NULL,
+    dataPublicacao DATE NOT NULL,
+    isbn VARCHAR(13) NOT NULL,
+    descricao VARCHAR(255) NOT NULL,
+    imagem VARCHAR(255) NOT NULL
+    situacao VARCHAR(10) NOT NULL
+
+}ENGINE=InnDB DEFAULT CHARSET=utf8;
