@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/emprestimo")
+@RequestMapping("/biblioteca")
 public class EmprestimoController {
 
     @Autowired
@@ -30,10 +30,22 @@ public class EmprestimoController {
                 .map(EmprestimoResponseDTO::new)
                 .collect(Collectors.toList());
     }
-    @PostMapping
+    @PostMapping("/emprestar")
     public ResponseEntity<Emprestimo> criarEmprestimo(@RequestBody EmprestimoRequestDTO data){
         Emprestimo emprestimoSalvo = emprestimoService.criarEmprestimo(data);
         return ResponseEntity.status(HttpStatus.CREATED).body(emprestimoSalvo);
+    }
+
+    @PostMapping("/devolver")
+    public ResponseEntity<Emprestimo> criarDevolucao(@RequestBody EmprestimoRequestDTO data){
+        Emprestimo devolucaoSalva = emprestimoService.criarDevolucao(data);
+        return ResponseEntity.status(HttpStatus.CREATED).body(devolucaoSalva);
+    }
+
+    @PostMapping("/reservar")
+    public ResponseEntity<Emprestimo> criarReserva(@RequestBody EmprestimoRequestDTO data){
+        Emprestimo reservaSalva = emprestimoService.criarReserva(data);
+        return ResponseEntity.status(HttpStatus.CREATED).body(reservaSalva);
     }
 
 }

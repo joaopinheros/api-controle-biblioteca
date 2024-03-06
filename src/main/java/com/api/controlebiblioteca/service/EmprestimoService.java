@@ -36,4 +36,36 @@ public class EmprestimoService {
 
         return emprestimo;
     }
+    public Emprestimo criarDevolucao(EmprestimoRequestDTO data){
+
+        //Verifica se o livro foi emprestado para ocorrer a devolução
+        livroService.devolverLivro(data.livro().getId());
+
+        //Verificar se a pessoa está cadastrada
+        pessoaService.verificarPessoaCadastrada(data.pessoa().getId());
+
+        Emprestimo emprestimo = new Emprestimo(data);
+
+        //Salvar devolução de livro
+        emprestimoRepository.save(emprestimo);
+
+        return emprestimo;
+    }
+
+    public Emprestimo criarReserva(EmprestimoRequestDTO data){
+
+        //Verifica se o livro está disponivel para ser reservado
+        livroService.reservarLivro(data.livro().getId());
+
+        //Verificar se a pessoa está cadastrada
+        pessoaService.verificarPessoaCadastrada(data.pessoa().getId());
+
+        Emprestimo emprestimo = new Emprestimo(data);
+
+        //Salvar devolução de livro
+        emprestimoRepository.save(emprestimo);
+
+        return emprestimo;
+    }
+
 }
