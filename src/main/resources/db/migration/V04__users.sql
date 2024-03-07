@@ -1,0 +1,6 @@
+CREATE TABLE users{
+    id UUID PRIMARY KEY NOT NULL,
+    login TEXT NOT NULL UNIQUE ,
+    senha TEXT NOT NULL,
+    role TEXT NOT NULL
+};

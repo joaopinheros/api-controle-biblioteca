@@ -37,12 +37,12 @@ public class LivroService {
         Optional<Livro> livroOptional = livroRepository.findById(id);
         if (livroOptional.isPresent()) {
             Livro livro = livroOptional.get();
-            if (livro.getSituacao() == Situacao.EMPRESTADO) {
+            if (livro.getSituacao() == Situacao.EMPRESTADO || livro.getSituacao() == Situacao.RESERVADO) {
                 livro.setSituacao(Situacao.DISPONIVEL);
                 livroRepository.save(livro);
                 return new LivroResponseDTO(livro);
             } else {
-                throw new LivroNaoDisponivelException("O Livro não está emprestado");
+                throw new LivroNaoDisponivelException("O Livro não está emprestado ou reservado");
             }
         } else {
             throw new LivroNaoEncontradoException("Não foi possível encontrar o livro");

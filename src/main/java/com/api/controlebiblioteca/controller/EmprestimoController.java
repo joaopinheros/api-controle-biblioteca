@@ -23,26 +23,26 @@ public class EmprestimoController {
     @Autowired
     private EmprestimoService emprestimoService;
 
-    @GetMapping
+    @GetMapping("/livros-emprestados")
     public List<EmprestimoResponseDTO> listarLivrosEmprestados(){
         return emprestimoRepository.findAll()
                 .stream()
                 .map(EmprestimoResponseDTO::new)
                 .collect(Collectors.toList());
     }
-    @PostMapping("/emprestar")
+    @PostMapping("/emprestar-livro")
     public ResponseEntity<Emprestimo> criarEmprestimo(@RequestBody EmprestimoRequestDTO data){
         Emprestimo emprestimoSalvo = emprestimoService.criarEmprestimo(data);
         return ResponseEntity.status(HttpStatus.CREATED).body(emprestimoSalvo);
     }
 
-    @PostMapping("/devolver")
+    @PostMapping("/devolver-livro")
     public ResponseEntity<Emprestimo> criarDevolucao(@RequestBody EmprestimoRequestDTO data){
         Emprestimo devolucaoSalva = emprestimoService.criarDevolucao(data);
         return ResponseEntity.status(HttpStatus.CREATED).body(devolucaoSalva);
     }
 
-    @PostMapping("/reservar")
+    @PostMapping("/reservar-livro")
     public ResponseEntity<Emprestimo> criarReserva(@RequestBody EmprestimoRequestDTO data){
         Emprestimo reservaSalva = emprestimoService.criarReserva(data);
         return ResponseEntity.status(HttpStatus.CREATED).body(reservaSalva);
