@@ -39,5 +39,4 @@ public class Emprestimo {
         this.dataEmprestimo = LocalDate.now();
         this.dataDevolucao = data.dataDevolucao();
     }
-
 }

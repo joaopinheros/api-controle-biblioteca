@@ -2,33 +2,32 @@ package com.api.controlebiblioteca.service;
 
 import com.api.controlebiblioteca.entity.Emprestimo;
 import com.api.controlebiblioteca.repository.EmprestimoRepository;
+import com.api.controlebiblioteca.service.EmprestimoService;
+import com.api.controlebiblioteca.service.LivroService;
+import com.api.controlebiblioteca.service.PessoaService;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+@ExtendWith(MockitoExtension.class)
 class EmprestimoServiceTest {
 
     @InjectMocks
     EmprestimoService emprestimoService;
     @Mock
+    PessoaService pessoaService;
+    @Mock
+    LivroService livroService;
+    @Mock
     EmprestimoRepository emprestimoRepository;
 
-    Emprestimo emprestimo;
-    @Test
-    void criarEmprestimoComSucesso() {
+   Emprestimo emprestimo;
+
+    @BeforeEach
+    void setUp() {
+
     }
 
-    @Test
-    void criarDevolucaoComSucesso() {
-    }
-
-    @Test
-    void criarReservaComSucesso() {
-    }
 }
